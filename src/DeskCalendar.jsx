@@ -198,7 +198,7 @@ export default function DeskCalendar() {
           {/* Header */}
                 <div style={{ width: '100%', maxWidth: 420, marginBottom: 8 }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                      <span style={{ fontSize: 13, color: colors.accent, letterSpacing: 2 }}>运势日历</span>span>
+                                      <span style={{ fontSize: 13, color: colors.accent, letterSpacing: 2 }}>运势日历</span>
                                       <button
                                                     onClick={() => setShowInput(true)}
                                                     style={{ background: 'none', border: 'none', fontSize: 12, color: colors.accent, cursor: 'pointer', opacity: 0.7 }}
@@ -257,11 +257,11 @@ export default function DeskCalendar() {
                     }}>
                                 <span style={{ fontSize: 13, color: colors.text }}>
                                               农历 {fortune.lunarMonth}月{fortune.lunarDay}
-                                </span>span>
-                                <span style={{ color: colors.accent, opacity: 0.4 }}>·</span>span>
+                                </span>
+                                <span style={{ color: colors.accent, opacity: 0.4 }}>·</span>
                                 <span style={{ fontSize: 13, color: colors.text }}>
                                   {fortune.ganzhiYear}年 {fortune.shuxiang}年
-                                </span>span>
+                                </span>
                     </div>
                       )}
               
@@ -269,8 +269,8 @@ export default function DeskCalendar() {
                 {fortune ? (
                     <div style={{ marginBottom: 20 }}>
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-                                              <span style={{ fontSize: 14, color: colors.text, letterSpacing: 1 }}>今日运势</span>span>
-                                              <span style={{ fontSize: 22, fontWeight: 600, color: colors.accent }}>{fortune.score}</span>span>
+                                              <span style={{ fontSize: 14, color: colors.text, letterSpacing: 1 }}>今日运势</span>
+                                              <span style={{ fontSize: 22, fontWeight: 600, color: colors.accent }}>{fortune.score}</span>
                                 </div>
                       {/* Progress bar */}
                                 <div style={{ background: `${colors.accent}20`, borderRadius: 8, height: 8, overflow: 'hidden' }}>
@@ -287,7 +287,7 @@ export default function DeskCalendar() {
                                   {[1,2,3,4,5].map(i => (
                                       <span key={i} style={{ fontSize: 18, color: i <= stars ? colors.accent : `${colors.accent}30` }}>
                                         {i <= stars ? '★' : '☆'}
-                                      </span>span>
+                                      </span>
                                     ))}
                                 </div>
                     </div>
@@ -348,10 +348,10 @@ export default function DeskCalendar() {
                   }}>
                                         <h2 style={{ fontSize: 20, color: colors.text, marginBottom: 8, fontWeight: 400 }}>
                                                       🌿 欢迎使用运势日历
-                                        </h2>h2>
+                                        </h2>
                                         <p style={{ fontSize: 13, color: colors.accent, marginBottom: 24, lineHeight: 1.6 }}>
                                                       输入您的出生日期，获取基于八字的每日运势指引
-                                        </p>p>
+                                        </p>
                                         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 10, marginBottom: 24 }}>
                                                       <input
                                                                         type="number"
