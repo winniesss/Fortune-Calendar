@@ -204,9 +204,9 @@ export default function DeskCalendar() {
                                                     style={{ background: 'none', border: 'none', fontSize: 12, color: colors.accent, cursor: 'pointer', opacity: 0.7 }}
                                                   >
                                                   ⚙ 修改生日
-                                      </button>button>
-                          </div>div>
-                </div>div>
+                                      </button>
+                          </div>
+                </div>
         
           {/* Main Card */}
               <div style={{
@@ -224,11 +224,11 @@ export default function DeskCalendar() {
                                 <div>
                                             <div style={{ fontSize: 72, fontWeight: 200, color: colors.text, lineHeight: 1, letterSpacing: -2 }}>
                                               {String(today.getDate()).padStart(2,'0')}
-                                            </div>div>
+                                            </div>
                                             <div style={{ fontSize: 16, color: colors.accent, marginTop: 4, letterSpacing: 1 }}>
                                               {today.getFullYear()}年 {today.getMonth()+1}月 星期{weekday}
-                                            </div>div>
-                                </div>div>
+                                            </div>
+                                </div>
                         {/* Solar term illustration */}
                         {fortune && (
                       <div style={{ textAlign: 'center' }}>
@@ -240,10 +240,10 @@ export default function DeskCalendar() {
                                                     />
                                     <div style={{ fontSize: 12, color: colors.accent, marginTop: 4, letterSpacing: 1 }}>
                                       {fortune.currentTerm.name}
-                                    </div>div>
-                      </div>div>
+                                    </div>
+                      </div>
                                 )}
-                      </div>div>
+                      </div>
               
                 {/* Lunar & GanZhi */}
                 {fortune && (
@@ -262,7 +262,7 @@ export default function DeskCalendar() {
                                 <span style={{ fontSize: 13, color: colors.text }}>
                                   {fortune.ganzhiYear}年 {fortune.shuxiang}年
                                 </span>span>
-                    </div>div>
+                    </div>
                       )}
               
                 {/* Fortune Score */}
@@ -271,7 +271,7 @@ export default function DeskCalendar() {
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                                               <span style={{ fontSize: 14, color: colors.text, letterSpacing: 1 }}>今日运势</span>span>
                                               <span style={{ fontSize: 22, fontWeight: 600, color: colors.accent }}>{fortune.score}</span>span>
-                                </div>div>
+                                </div>
                       {/* Progress bar */}
                                 <div style={{ background: `${colors.accent}20`, borderRadius: 8, height: 8, overflow: 'hidden' }}>
                                               <div style={{
@@ -281,7 +281,7 @@ export default function DeskCalendar() {
                                       borderRadius: 8,
                                       transition: 'width 1s ease',
                     }} />
-                                </div>div>
+                                </div>
                       {/* Stars */}
                                 <div style={{ marginTop: 8, display: 'flex', gap: 4 }}>
                                   {[1,2,3,4,5].map(i => (
@@ -289,30 +289,30 @@ export default function DeskCalendar() {
                                         {i <= stars ? '★' : '☆'}
                                       </span>span>
                                     ))}
-                                </div>div>
-                    </div>div>
+                                </div>
+                    </div>
                   ) : (
                     <div style={{ textAlign: 'center', padding: '20px 0', color: colors.accent, opacity: 0.6, fontSize: 14 }}>
                                 请输入生日以查看个人运势
-                    </div>div>
+                    </div>
                       )}
               
                 {/* Yi Ji */}
                 {fortune && (
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
                                 <div style={{ background: `${colors.accent}12`, borderRadius: 12, padding: '12px 14px' }}>
-                                              <div style={{ fontSize: 12, color: colors.accent, marginBottom: 8, letterSpacing: 1 }}>宜</div>div>
+                                              <div style={{ fontSize: 12, color: colors.accent, marginBottom: 8, letterSpacing: 1 }}>宜</div>
                                   {fortune.yiji.yi.map(item => (
-                                      <div key={item} style={{ fontSize: 13, color: colors.text, marginBottom: 4 }}>✓ {item}</div>div>
+                                      <div key={item} style={{ fontSize: 13, color: colors.text, marginBottom: 4 }}>✓ {item}</div>
                                     ))}
-                                </div>div>
+                                </div>
                                 <div style={{ background: '#ff6b6b12', borderRadius: 12, padding: '12px 14px' }}>
-                                              <div style={{ fontSize: 12, color: '#c0392b', marginBottom: 8, letterSpacing: 1 }}>忌</div>div>
+                                              <div style={{ fontSize: 12, color: '#c0392b', marginBottom: 8, letterSpacing: 1 }}>忌</div>
                                   {fortune.yiji.ji.map(item => (
-                                      <div key={item} style={{ fontSize: 13, color: colors.text, marginBottom: 4 }}>✗ {item}</div>div>
+                                      <div key={item} style={{ fontSize: 13, color: colors.text, marginBottom: 4 }}>✗ {item}</div>
                                     ))}
-                                </div>div>
-                    </div>div>
+                                </div>
+                    </div>
                       )}
               
                 {/* Next solar term */}
@@ -325,9 +325,9 @@ export default function DeskCalendar() {
                                   letterSpacing: 1,
                     }}>
                                 下一节气：{fortune.nextTerm.name}（{fortune.nextTerm.month}月{fortune.nextTerm.day}日）
-                    </div>div>
+                    </div>
                       )}
-              </div>div>
+              </div>
         
           {/* Birth date input modal */}
           {showInput && (
@@ -388,7 +388,7 @@ export default function DeskCalendar() {
                                                                                             outline: 'none',
                                                                         }}
                                                                       />
-                                        </div>div>
+                                        </div>
                                         <button
                                                         onClick={handleSaveBirth}
                                                         style={{
@@ -399,10 +399,10 @@ export default function DeskCalendar() {
                                                         }}
                                                       >
                                                       查看今日运势
-                                        </button>button>
-                            </div>div>
-                  </div>div>
+                                        </button>
+                            </div>
+                  </div>
               )}
-        </div>div>
+        </div>
       )
 }</button>
