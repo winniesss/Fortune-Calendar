@@ -97,7 +97,7 @@ function TermIllustration({ imgBase, termKey, name, colors }) {
     if (failed || !termKey) return fallback
     return (
           <img
-                  src={`${imgBase}${termKey}.png`}
+                  src={`${imgBase}${termKey}.svg`}
                   alt={name}
                   style={{ width: 80, height: 80, borderRadius: 12, objectFit: 'cover', opacity: 0.9 }}
                   onError={() => setFailed(true)}

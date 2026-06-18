@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef8e6"/>
+      <stop offset="1" stop-color="#a6cf72" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="14" fill="url(#bg)"/>
+  <path d="M50 50 m-32 0 a32 22 0 1 0 64 0 a32 22 0 1 0 -64 0" fill="#a6cf72"/><path d="M50 50 L50 30" stroke="#eef8e6" stroke-width="1.5"/><path d="M50 50 L80 50" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L71.22164807501599 64.13650362210731" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L50.023889801322 69.9999936586367" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L28.812150655399844 64.15901817296864" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L20.000038048173813 50.03185305832974" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L28.744607024231815 35.886046786630466" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L49.92833065663155 30.00005707224564" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 L71.15399687025268 35.81850319115567" stroke="#6fae2c" stroke-width="0.8" fill="none" stroke-linecap="round"/><path d="M50 50 Q56 70 52 90" stroke="#6fae2c" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf0f5"/>
+      <stop offset="1" stop-color="#e69ac0" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="14" fill="url(#bg)"/>
+  <g transform="translate(50 86) rotate(-30)"><path d="M0 0 Q 14 -13 0 -26 Q -14 -13 0 0 Z" fill="#e69ac0"/><path d="M0 0 L0 -23.92" stroke="#5c1640" stroke-width="1" fill="none" opacity="0.5"/></g><g transform="translate(50 86) rotate(30)"><path d="M0 0 Q 14 -13 0 -26 Q -14 -13 0 0 Z" fill="#e69ac0"/><path d="M0 0 L0 -23.92" stroke="#5c1640" stroke-width="1" fill="none" opacity="0.5"/></g><g transform="translate(50 48)"><ellipse cx="0" cy="-12.4" rx="9.200000000000001" ry="13.200000000000001" fill="#e69ac0" transform="rotate(0)"/><ellipse cx="0" cy="-12.4" rx="9.200000000000001" ry="13.200000000000001" fill="#e69ac0" transform="rotate(72)"/><ellipse cx="0" cy="-12.4" rx="9.200000000000001" ry="13.200000000000001" fill="#e69ac0" transform="rotate(144)"/><ellipse cx="0" cy="-12.4" rx="9.200000000000001" ry="13.200000000000001" fill="#e69ac0" transform="rotate(216)"/><ellipse cx="0" cy="-12.4" rx="9.200000000000001" ry="13.200000000000001" fill="#e69ac0" transform="rotate(288)"/><circle r="6.800000000000001" fill="#cc4f97"/></g><g transform="translate(50 48)"><ellipse cx="0" cy="-6.82" rx="5.0600000000000005" ry="7.260000000000001" fill="#cc4f97" transform="rotate(0)"/><ellipse cx="0" cy="-6.82" rx="5.0600000000000005" ry="7.260000000000001" fill="#cc4f97" transform="rotate(72)"/><ellipse cx="0" cy="-6.82" rx="5.0600000000000005" ry="7.260000000000001" fill="#cc4f97" transform="rotate(144)"/><ellipse cx="0" cy="-6.82" rx="5.0600000000000005" ry="7.260000000000001" fill="#cc4f97" transform="rotate(216)"/><ellipse cx="0" cy="-6.82" rx="5.0600000000000005" ry="7.260000000000001" fill="#cc4f97" transform="rotate(288)"/><circle r="3.74" fill="#5c1640"/></g>
+</svg>

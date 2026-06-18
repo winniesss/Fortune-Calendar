@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6e0"/>
+      <stop offset="1" stop-color="#f2c34a" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="14" fill="url(#bg)"/>
+  <ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(0 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(22.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(45 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(67.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(90 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(112.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(135 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(157.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(180 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(202.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(225 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(247.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(270 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(292.5 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(315 50 50)"/><ellipse cx="50" cy="28" rx="4.5" ry="11" fill="#f2c34a" transform="rotate(337.5 50 50)"/><circle cx="50" cy="50" r="14" fill="#6c4400"/><circle cx="50" cy="50" r="14" fill="#e8a020" opacity="0.3"/><path d="M50 64 L50 92" stroke="#e8a020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

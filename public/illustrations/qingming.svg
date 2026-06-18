@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8f8f0"/>
+      <stop offset="1" stop-color="#86cca8" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="14" fill="url(#bg)"/>
+  <path d="M22 90 Q20 64 24 46" stroke="#2da870" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M31 90 Q29 64 33 46" stroke="#86cca8" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M40 90 Q38 64 42 46" stroke="#2da870" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M49 90 Q47 64 51 46" stroke="#86cca8" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M58 90 Q56 64 60 46" stroke="#2da870" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M67 90 Q65 64 69 46" stroke="#86cca8" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M76 90 Q74 64 78 46" stroke="#2da870" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M34 22 q 2.2 3.6 0 5.6 q -2.2 -2 0 -5.6 Z" fill="#86cca8"/><path d="M58 30 q 2.2 3.6 0 5.6 q -2.2 -2 0 -5.6 Z" fill="#2da870"/><path d="M74 20 q 2.2 3.6 0 5.6 q -2.2 -2 0 -5.6 Z" fill="#86cca8"/>
+</svg>

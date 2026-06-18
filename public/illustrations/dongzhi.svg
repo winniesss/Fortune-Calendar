@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9eef8"/>
+      <stop offset="1" stop-color="#9aaedd" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="14" fill="url(#bg)"/>
+  <path d="M44 92 L44 50" stroke="#3060b8" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M56 92 L56 54" stroke="#9aaedd" stroke-width="2" fill="none" stroke-linecap="round"/><g transform="translate(40 90) rotate(8)"><path d="M0 0 Q 7 -25 0 -50 Q -7 -25 0 0 Z" fill="#9aaedd"/><path d="M0 0 L0 -46" stroke="#08142c" stroke-width="1" fill="none" opacity="0.5"/></g><g transform="translate(60 90) rotate(-8)"><path d="M0 0 Q 7 -23 0 -46 Q -7 -23 0 0 Z" fill="#3060b8"/><path d="M0 0 L0 -42.32" stroke="#08142c" stroke-width="1" fill="none" opacity="0.5"/></g><g transform="translate(44 46)"><ellipse cx="0" cy="-6.2" rx="4.6000000000000005" ry="6.6000000000000005" fill="#fffef5" transform="rotate(0)"/><ellipse cx="0" cy="-6.2" rx="4.6000000000000005" ry="6.6000000000000005" fill="#fffef5" transform="rotate(72)"/><ellipse cx="0" cy="-6.2" rx="4.6000000000000005" ry="6.6000000000000005" fill="#fffef5" transform="rotate(144)"/><ellipse cx="0" cy="-6.2" rx="4.6000000000000005" ry="6.6000000000000005" fill="#fffef5" transform="rotate(216)"/><ellipse cx="0" cy="-6.2" rx="4.6000000000000005" ry="6.6000000000000005" fill="#fffef5" transform="rotate(288)"/><circle r="3.4000000000000004" fill="#3060b8"/></g><g transform="translate(60 50)"><ellipse cx="0" cy="-5.58" rx="4.140000000000001" ry="5.94" fill="#fffef5" transform="rotate(0)"/><ellipse cx="0" cy="-5.58" rx="4.140000000000001" ry="5.94" fill="#fffef5" transform="rotate(72)"/><ellipse cx="0" cy="-5.58" rx="4.140000000000001" ry="5.94" fill="#fffef5" transform="rotate(144)"/><ellipse cx="0" cy="-5.58" rx="4.140000000000001" ry="5.94" fill="#fffef5" transform="rotate(216)"/><ellipse cx="0" cy="-5.58" rx="4.140000000000001" ry="5.94" fill="#fffef5" transform="rotate(288)"/><circle r="3.06" fill="#9aaedd"/></g>
+</svg>
