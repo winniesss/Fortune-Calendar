@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { Solar } from 'lunar-javascript'
 
-// ── 24 节气数据 ──────────────────────────────────────────────
+// ── 24 节气数据（仅用于配色与插图，日期由 lunar-javascript 实时计算）──
 const SOLAR_TERMS = [
   { key: 'xiaohan',   name: '小寒', month: 1,  day: 5  },
   { key: 'dahan',     name: '大寒', month: 1,  day: 20 },
@@ -28,39 +29,8 @@ const SOLAR_TERMS = [
   { key: 'dongzhi',   name: '冬至', month: 12, day: 22 },
   ]
 
-// ── 天干地支 ────────────────────────────────────────────────
-const TIANGAN = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸']
-const DIZHI   = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥']
-const SHUXIANG = ['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪']
-
-function getGanZhi(year) {
-    const g = (year - 4) % 10
-    const z = (year - 4) % 12
-    return TIANGAN[g] + DIZHI[z]
-}
-
-function getShuxiang(year) {
-    return SHUXIANG[(year - 4) % 12]
-}
-
-// ── 获取当前节气 ─────────────────────────────────────────────
-function getCurrentSolarTerm(date) {
-    const m = date.getMonth() + 1
-    const d = date.getDate()
-    let current = null
-    let next = null
-    for (let i = 0; i < SOLAR_TERMS.length; i++) {
-          const t = SOLAR_TERMS[i]
-          if (t.month < m || (t.month === m && t.day <= d)) {
-                  current = t
-          } else if (!next) {
-                  next = t
-          }
-    }
-    if (!current) current = SOLAR_TERMS[SOLAR_TERMS.length - 1]
-    if (!next) next = SOLAR_TERMS[0]
-    return { current, next }
-}
+// 节气名称 → 配色/插图配置
+const TERM_BY_NAME = SOLAR_TERMS.reduce((acc, t) => { acc[t.name] = t; return acc }, {})
 
 // ── 宜忌列表 ────────────────────────────────────────────────
 const YI_LIST = ['出行','会友','签约','开业','学习','运动','创作','冥想','晒太阳','读书','烹饪','园艺']
@@ -74,24 +44,11 @@ function getDailyYiJi(seed) {
     }
 }
 
-// ── 运势评分 ─────────────────────────────────────────────────
-function getFortuneScore(birthYear, birthMonth, birthDay, todaySeed) {
-    const base = ((birthYear + birthMonth * 3 + birthDay * 7 + todaySeed) % 40) + 60
-    return base
-}
-
-// ── 农历简易转换（近似） ─────────────────────────────────────
-const LUNAR_MONTHS = ['正','二','三','四','五','六','七','八','九','十','冬','腊']
-const LUNAR_DAYS_TENS = ['初','十','廿','三']
-const LUNAR_DAYS_ONES = ['日','一','二','三','四','五','六','七','八','九','十']
-
-function getLunarDay(day) {
-    if (day === 10) return '初十'
-    if (day === 20) return '二十'
-    if (day === 30) return '三十'
-    const tens = LUNAR_DAYS_TENS[Math.floor(day / 10)]
-    const ones = LUNAR_DAYS_ONES[day % 10]
-    return tens + ones
+// ── 运势评分（基于出生日柱与当日日柱的天干地支互动）──────────
+// 干为天、支为地，取两者天干地支的索引组合成确定性分值（60–100）
+function getFortuneScore(birthDayGan, birthDayZhi, todayDayGan, todayDayZhi) {
+    const raw = birthDayGan * 7 + birthDayZhi * 5 + todayDayGan * 13 + todayDayZhi * 11
+    return (raw % 41) + 60
 }
 
 // ── 节气颜色主题 ──────────────────────────────────────────────
@@ -124,6 +81,30 @@ const TERM_COLORS = {
 
 const DEFAULT_COLOR = { bg: '#f5f0e8', accent: '#8b7355', text: '#3c2800' }
 
+// ── 节气插图（图片缺失时回退为渐变徽章，避免 404 空白）──────────
+function TermIllustration({ imgBase, termKey, name, colors }) {
+    const [failed, setFailed] = useState(false)
+    const fallback = (
+          <div style={{
+                  width: 80, height: 80, borderRadius: 12,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  background: `linear-gradient(135deg, ${colors.accent}30, ${colors.accent}70)`,
+                  color: '#fff', fontSize: 28, fontWeight: 300, letterSpacing: 2,
+          }}>
+                {name ? name[0] : '节'}
+          </div>
+    )
+    if (failed || !termKey) return fallback
+    return (
+          <img
+                  src={`${imgBase}${termKey}.png`}
+                  alt={name}
+                  style={{ width: 80, height: 80, borderRadius: 12, objectFit: 'cover', opacity: 0.9 }}
+                  onError={() => setFailed(true)}
+                />
+    )
+}
+
 // ── 主组件 ───────────────────────────────────────────────────
 export default function DeskCalendar() {
     const today = new Date()
@@ -145,26 +126,37 @@ export default function DeskCalendar() {
   const calcFortune = useCallback((bd) => {
         const { year, month, day } = bd
         if (!year || !month || !day) return
-        const todaySeed = today.getFullYear() * 10000 + (today.getMonth()+1) * 100 + today.getDate()
-        const score = getFortuneScore(parseInt(year), parseInt(month), parseInt(day), todaySeed)
-        const { current, next } = getCurrentSolarTerm(today)
-        const yiji = getDailyYiJi(todaySeed % 100 + parseInt(day))
-        const ganzhiYear = getGanZhi(today.getFullYear())
-        const shuxiang = getShuxiang(today.getFullYear())
-        // Approximate lunar date (simplified)
-                                      const lunarMonth = ((today.getMonth() + 10) % 12)
-        const lunarDay = today.getDate() % 30 || 30
 
-                                      setFortune({
-                                              score,
-                                              currentTerm: current,
-                                              nextTerm: next,
-                                              yiji,
-                                              ganzhiYear,
-                                              shuxiang,
-                                              lunarMonth: LUNAR_MONTHS[lunarMonth],
-                                              lunarDay: getLunarDay(lunarDay),
-                                      })
+        // 今日农历 / 干支 / 节气（lunar-javascript 精确计算）
+        const todayLunar = Solar.fromYmd(today.getFullYear(), today.getMonth() + 1, today.getDate()).getLunar()
+        const prevJieQi = todayLunar.getPrevJieQi(true)
+        const nextJieQi = todayLunar.getNextJieQi(true)
+        const nextSolar = nextJieQi.getSolar()
+        const current = TERM_BY_NAME[prevJieQi.getName()] || null
+
+        // 出生日柱（基于真实八字的日干日支）
+        const birthLunar = Solar.fromYmd(parseInt(year), parseInt(month), parseInt(day)).getLunar()
+        const score = getFortuneScore(
+              birthLunar.getDayGanIndex(),
+              birthLunar.getDayZhiIndex(),
+              todayLunar.getDayGanIndex(),
+              todayLunar.getDayZhiIndex(),
+        )
+        const yiji = getDailyYiJi(todayLunar.getDayGanIndex() * 12 + todayLunar.getDayZhiIndex() + parseInt(day))
+
+        setFortune({
+              score,
+              yiji,
+              currentTermName: prevJieQi.getName(),
+              currentTermKey: current ? current.key : null,
+              nextTermName: nextJieQi.getName(),
+              nextTermMonth: nextSolar.getMonth(),
+              nextTermDay: nextSolar.getDay(),
+              ganzhiYear: todayLunar.getYearInGanZhi(),
+              shuxiang: todayLunar.getYearShengXiao(),
+              lunarMonth: todayLunar.getMonthInChinese(),
+              lunarDay: todayLunar.getDayInChinese(),
+        })
   }, [today])
 
   const handleSaveBirth = () => {
@@ -174,13 +166,13 @@ export default function DeskCalendar() {
         calcFortune(birthDate)
   }
 
-  const colors = fortune ? (TERM_COLORS[fortune.currentTerm.key] || DEFAULT_COLOR) : DEFAULT_COLOR
+  const colors = fortune ? (TERM_COLORS[fortune.currentTermKey] || DEFAULT_COLOR) : DEFAULT_COLOR
 
   const weekdays = ['日','一','二','三','四','五','六']
     const weekday = weekdays[today.getDay()]
 
-  // Star rating display
-  const stars = fortune ? Math.round((fortune.score - 60) / 8) : 0
+  // 星级：将 60–100 分映射到 1–5 星
+  const stars = fortune ? Math.min(5, Math.max(1, Math.round(fortune.score / 20))) : 0
 
   const imgBase = import.meta.env.BASE_URL + 'illustrations/'
 
@@ -232,14 +224,14 @@ export default function DeskCalendar() {
                         {/* Solar term illustration */}
                         {fortune && (
                       <div style={{ textAlign: 'center' }}>
-                                    <img
-                                                      src={`${imgBase}${fortune.currentTerm.key}.png`}
-                                                      alt={fortune.currentTerm.name}
-                                                      style={{ width: 80, height: 80, borderRadius: 12, objectFit: 'cover', opacity: 0.9 }}
-                                                      onError={(e) => { e.target.style.display = 'none' }}
+                                    <TermIllustration
+                                                      imgBase={imgBase}
+                                                      termKey={fortune.currentTermKey}
+                                                      name={fortune.currentTermName}
+                                                      colors={colors}
                                                     />
                                     <div style={{ fontSize: 12, color: colors.accent, marginTop: 4, letterSpacing: 1 }}>
-                                      {fortune.currentTerm.name}
+                                      {fortune.currentTermName}
                                     </div>
                       </div>
                                 )}
@@ -324,7 +316,7 @@ export default function DeskCalendar() {
                                   textAlign: 'center',
                                   letterSpacing: 1,
                     }}>
-                                下一节气：{fortune.nextTerm.name}（{fortune.nextTerm.month}月{fortune.nextTerm.day}日）
+                                下一节气：{fortune.nextTermName}（{fortune.nextTermMonth}月{fortune.nextTermDay}日）
                     </div>
                       )}
               </div>
@@ -361,7 +353,7 @@ export default function DeskCalendar() {
                                                                         style={{
                                                                                             padding: '12px 14px', borderRadius: 12, border: `1px solid ${colors.accent}40`,
                                                                                             fontSize: 14, background: 'rgba(255,255,255,0.8)', color: colors.text,
-                                                                                            outline: 'none',
+                                                                                            outline: 'none', minWidth: 0, width: '100%', boxSizing: 'border-box',
                                                                         }}
                                                                       />
                                                       <input
@@ -373,7 +365,7 @@ export default function DeskCalendar() {
                                                                         style={{
                                                                                             padding: '12px 14px', borderRadius: 12, border: `1px solid ${colors.accent}40`,
                                                                                             fontSize: 14, background: 'rgba(255,255,255,0.8)', color: colors.text,
-                                                                                            outline: 'none',
+                                                                                            outline: 'none', minWidth: 0, width: '100%', boxSizing: 'border-box',
                                                                         }}
                                                                       />
                                                       <input
@@ -385,7 +377,7 @@ export default function DeskCalendar() {
                                                                         style={{
                                                                                             padding: '12px 14px', borderRadius: 12, border: `1px solid ${colors.accent}40`,
                                                                                             fontSize: 14, background: 'rgba(255,255,255,0.8)', color: colors.text,
-                                                                                            outline: 'none',
+                                                                                            outline: 'none', minWidth: 0, width: '100%', boxSizing: 'border-box',
                                                                         }}
                                                                       />
                                         </div>
